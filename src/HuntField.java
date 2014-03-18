@@ -55,7 +55,8 @@ public class HuntField {
     }
     
     public synchronized boolean moveItem(FieldItem item, Position initial, Position finalPosition){
-        if ((position.getX() <= this.getXLength()) || (position.getY() <= this.getYLength())) return false;
+        if ((finalPosition.getX() <= this.getXLength()) || (finalPosition.getY() <= this.getYLength())) return false;
+        if ((initial.getX() <= this.getXLength()) || (initial.getY() <= this.getYLength())) return false;
         for (int i = 0; i < 10; i++) {
             if ((field[initial.getX()][initial.getY()] == item) && (field[finalPosition.getX()][finalPosition.getY()] == null)) {
                 field[initial.getX()][initial.getY()] = null;
