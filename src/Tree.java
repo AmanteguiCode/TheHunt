@@ -1,19 +1,23 @@
 
-public class Tree extends Thread implements FieldItem{
+public class Tree implements FieldItem{
 
-    @Override
-    public void run() {
-        super.run(); //To change body of generated methods, choose Tools | Templates.
+    char type;
+    HuntField field;
+
+    public Tree(HuntField field) {
+        this.field = field;
+        this.type = 'T';
+        while(this.field.setItem(this, this.field.randomPositionGenerator()) != true);
     }
 
     @Override
     public boolean fired() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 
     @Override
     public char getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.type;
     }
 
     

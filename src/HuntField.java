@@ -1,10 +1,12 @@
 
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 public class HuntField {
-
+    
+    Random rnd = new Random(System.currentTimeMillis());
     FieldItem[][] field;
     int x;
     int y;
@@ -95,7 +97,9 @@ public class HuntField {
         return stringgedField;
     }
     
-    
+    public Position randomPositionGenerator(){
+        return new Position(rnd.nextInt(this.getXLength()), rnd.nextInt(this.getYLength()));
+    }
     
     
 }

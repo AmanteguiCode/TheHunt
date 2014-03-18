@@ -1,14 +1,24 @@
 
 public class Hunter extends Thread implements FieldItem{
 
+    char type;
+    HuntField field;
+
+    public Hunter(HuntField field) {
+        this.field = field;
+        this.type = 'H';
+        while(this.field.setItem(this, this.field.randomPositionGenerator()) != true){}
+    }
+    
+    
     @Override
     public boolean fired() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 
     @Override
     public char getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.type;
     }
 
     @Override
