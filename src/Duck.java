@@ -8,11 +8,18 @@ public class Duck extends Thread implements FieldItem{
 
     char type;
     HuntField field;
+    Position myPosition;
 
     public Duck(HuntField field) {
         this.field = field;
         this.type = 'D';
-        while(this.field.setItem(this, this.field.randomPositionGenerator()) != true){}
+        while(true){
+            myPosition = field.randomPositionGenerator();
+            if (myPosition == null) {
+                field.setItem(this, myPosition);
+                break;
+            }
+        }
     }
     
     
@@ -30,9 +37,22 @@ public class Duck extends Thread implements FieldItem{
     public void run() {
         while(true){
             try {
-                Thread.currentThread().sleep(this.field.rnd.nextInt(300));
+                Thread.sleep(field.rnd.nextInt(300));
+                switch(field.rnd.nextInt(3)){
+                    case 0:
+                        field.moveItem(this, myPosition, new Position(myPosition.getX(), myPosition.getY()-1));
+                        break;
+                    case 1:
+                        field.moveItem(this, myPosition, new Position(myPosition.getX()-1, myPosition.getY()));
+                        break;
+                    case 2:
+                        field.moveItem(this, myPosition, new Position(myPosition.getX(), myPosition.getY()+1));
+                        break;
+                    case 3:
+                        field.moveItem(this, myPosition, new Position(myPosition.getX()+1, myPosition.getY()));
+                        break;
+                }
             } catch (InterruptedException ex) {}
-            this.field.moveItem(this, null, null);
         }
     }
     

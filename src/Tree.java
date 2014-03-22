@@ -3,11 +3,18 @@ public class Tree implements FieldItem{
 
     char type;
     HuntField field;
+    Position myPosition;
 
     public Tree(HuntField field) {
         this.field = field;
         this.type = 'T';
-        while(this.field.setItem(this, this.field.randomPositionGenerator()) != true);
+        while (true) {
+            myPosition = field.randomPositionGenerator();
+            if (myPosition == null) {
+                field.setItem(this, myPosition);
+                break;
+            }
+        }
     }
 
     @Override

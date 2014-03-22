@@ -1,16 +1,27 @@
 
-public class Hunter extends Thread implements FieldItem{
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class Hunter extends Thread implements FieldItem {
 
     char type;
     HuntField field;
+    Position myPosition; 
+    int shot = 0;
 
     public Hunter(HuntField field) {
         this.field = field;
         this.type = 'H';
-        while(this.field.setItem(this, this.field.randomPositionGenerator()) != true){}
+        while (true) {
+            myPosition = field.randomPositionGenerator();
+            if (myPosition == null) {
+                field.setItem(this, myPosition);
+                break;
+            }
+        }
     }
-    
-    
+
     @Override
     public boolean fired() {
         return true;
@@ -23,7 +34,14 @@ public class Hunter extends Thread implements FieldItem{
 
     @Override
     public void run() {
-        super.run(); //To change body of generated methods, choose Tools | Templates.
+        try {
+            Thread.sleep(field.rnd.nextInt(100));
+        } catch (InterruptedException ex) {}
+        while(true){
+            if(field.shot(new Position(myPosition.getX(), myPosition.getY()-1))){
+                    
+                }
+            }
+        }
     }
-
 }

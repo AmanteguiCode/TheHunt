@@ -6,10 +6,10 @@ import java.util.logging.Logger;
 
 public class HuntField {
     
-    Random rnd = new Random(System.currentTimeMillis());
-    FieldItem[][] field;
-    int x;
-    int y;
+    public Random rnd = new Random(System.currentTimeMillis());
+    private FieldItem[][] field;
+    private int x;
+    private int y;
 
     public HuntField(int X,int  Y) {
         this.field = new FieldItem[X][Y];
@@ -37,7 +37,7 @@ public class HuntField {
     public synchronized boolean shot(Position position){
         if ((position.getX() <= this.getXLength()) || (position.getY() <= this.getYLength())) return false;
         if (field[position.getX()][position.getY()] != null) {
-            field[position.getX()][position.getY()].fired();
+            return field[position.getX()][position.getY()].fired();
         }
         return false;
     } 
