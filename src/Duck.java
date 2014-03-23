@@ -9,6 +9,7 @@ public class Duck extends Thread implements FieldItem{
     char type;
     HuntField field;
     Position myPosition;
+    private boolean alive = true;
 
     public Duck(HuntField field) {
         this.field = field;
@@ -25,6 +26,7 @@ public class Duck extends Thread implements FieldItem{
     
     @Override
     public boolean fired() {
+        alive = false;
         return true;
     }
 
@@ -35,7 +37,7 @@ public class Duck extends Thread implements FieldItem{
 
     @Override
     public void run() {
-        while(true){
+        while(alive){
             try {
                 Thread.sleep(field.rnd.nextInt(300));
                 switch(field.rnd.nextInt(3)){

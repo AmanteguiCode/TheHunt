@@ -82,6 +82,15 @@ public class HuntField {
         return num;
     }
     
+    public synchronized Position getPosition(FieldItem item){
+        for (int i = 0; i < this.getXLength(); i++) {
+            for (int j = 0; j < this.getYLength(); j++) {
+                if (item == field[i][j]) return new Position(i, j);
+            }
+        }
+        return new Position(0,0);
+    }
+    
     public synchronized String toString(){
         String stringgedField = "";
         for (int i = 0; i < this.getYLength(); i++) {
