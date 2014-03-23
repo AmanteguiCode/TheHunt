@@ -1,9 +1,9 @@
 
 public class Tree implements FieldItem{
 
-    char type;
-    HuntField field;
-    Position myPosition;
+    private char type;
+    private HuntField field;
+    private Position myPosition;
 
     public Tree(HuntField field) {
         this.field = field;
@@ -19,7 +19,7 @@ public class Tree implements FieldItem{
 
     @Override
     public boolean fired() {
-        return true;
+        return false;
     }
 
     @Override

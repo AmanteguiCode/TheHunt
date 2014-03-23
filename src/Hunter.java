@@ -5,12 +5,12 @@ import java.util.logging.Logger;
 
 public class Hunter extends Thread implements FieldItem {
 
-    char type;
-    HuntField field;
-    Position myPosition;
-    char cardinals[];
-    int shot = 0;
-    private boolean alive = true;
+    private char type;
+    private HuntField field;
+    private Position myPosition;
+    private char cardinals[];
+    private int shot = 0;
+    private boolean alive;
 
     public Hunter(HuntField field) {
         this.field = field;
@@ -23,6 +23,7 @@ public class Hunter extends Thread implements FieldItem {
                 break;
             }
         }
+        alive = true;
     }
 
     @Override

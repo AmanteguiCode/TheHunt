@@ -6,10 +6,10 @@ import java.util.logging.Logger;
 
 public class Duck extends Thread implements FieldItem{
 
-    char type;
-    HuntField field;
-    Position myPosition;
-    private boolean alive = true;
+    private char type;
+    private HuntField field;
+    private Position myPosition;
+    private boolean alive;
 
     public Duck(HuntField field) {
         this.field = field;
@@ -21,6 +21,7 @@ public class Duck extends Thread implements FieldItem{
                 break;
             }
         }
+        alive = true;
     }
     
     
